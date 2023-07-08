@@ -1,0 +1,21 @@
+from modules.tasks import (
+    upload_download,
+    empty_garbage,
+    stabilize_steering,
+    fuel_engines,
+    divert_power,
+    admin_swipe,
+    diverted_power_electrical,
+    fix_wiring,
+    prime_shields,
+    start_reactor,
+    unlock_manifold,
+    calibrate_distributior,
+    clear_asteroids,
+    clean_vent,
+    clean_filter,
+    inspect_sample,
+    align_engine,
+    scan,
+)
+from modules.file_sorter import sorter
