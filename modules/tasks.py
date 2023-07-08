@@ -219,7 +219,7 @@ def clear_asteroids():
     crosshair_start_pos = (969, 560)
     region = (574, 167, 786, 784)
 
-    win32api.SetCursorPos((crosshair_start_pos[0], crosshair_start_pos[1]))
+    win32api.SetCursorPos(crosshair_start_pos)
     cursor_pos = pag.position()
 
     # loop though screenshot area
@@ -237,12 +237,14 @@ def clear_asteroids():
 
 
 def clean_vent():
+    region = (630, 252, 702, 595)
+
     win32api.SetCursorPos((980, 480))
     click()
 
     time.sleep(1)
 
-    screenshot = pag.screenshot(region=(630, 252, 702, 595))
+    screenshot = pag.screenshot(region=region)
     for x in range(0, screenshot.width, 5):
         for y in range(0, screenshot.height, 5):
             r, g, b = screenshot.getpixel((x, y))
@@ -250,11 +252,11 @@ def clean_vent():
             if g in range(170, 220):
                 win32api.SetCursorPos((630 + x, 252 + y))
                 click()
-                screenshot = pag.screenshot(region=(630, 252, 702, 595))
+                screenshot = pag.screenshot(region=region)
             if g == 255:
                 return
 
-        screenshot = pag.screenshot(region=(630, 252, 702, 595))
+        screenshot = pag.screenshot(region=region)
 
 
 def clean_filter():
@@ -263,7 +265,7 @@ def clean_filter():
     leaf_colors = ((206, 149, 55), (174, 43, 5), (57, 77, 19))
     region = (532, 115, 875, 870)
 
-    win32api.SetCursorPos((starting_point[0], starting_point[1]))
+    win32api.SetCursorPos(starting_point)
     cursor_pos = pag.position()
 
     while pag.pixel(cursor_pos[0], cursor_pos[1]) == bg_color:
@@ -288,8 +290,7 @@ def clean_filter():
 
 
 def inspect_sample():
-    samples = [(750, 510), (859, 510), (970, 510), (1002, 510), (1193, 510)]
-
+    samples = ((750, 510), (859, 510), (970, 510), (1002, 510), (1193, 510))
     red_value = 189
     btn = (1259, 945)
 
@@ -343,4 +344,3 @@ def chart_course():
 
 def scan():
     time.sleep(9)
-    print("Done")
